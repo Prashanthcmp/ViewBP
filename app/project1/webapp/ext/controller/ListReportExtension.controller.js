@@ -7,11 +7,11 @@ sap.ui.define([
 
     return sap.ui.controller("project1.ext.controller.ListReportExtension", {
         onInit: function (oEvent) {
-            alert('onInit');
+            //alert('onInit');
         },
 
         _getVal: function(evt) {
-			return evt.getSource().getValue();
+			return evt.getSource().getText();
 		},
 
         onLinkPress: function (evt){

@@ -1,0 +1,9 @@
+
+<core:FragmentDefinition
+    xmlns:core='sap.ui.core'
+    xmlns='sap.m'>
+  <Link
+      id='idBPPrimaryContactLink'
+      press=".onLinkPress"
+      text='{BPPrimaryContact}'></Link>
+</core:FragmentDefinition>

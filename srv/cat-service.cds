@@ -17,7 +17,22 @@ annotate my.ViewBP.BusinessP with @(
                 {Value: BPRepoName},
                 {Value: BPLocation},
                 {Value: BPPrimaryContact}
-            ]
+            ],
+
+            Facets  : [
+                {
+                    $Type : 'UI.ReferenceFacet',
+                    ID : 'generalFacetId',
+                    Label : 'Upload Collection',
+                    Target : '@UI.FieldGroup#GeanralInfo'
+                }
+            ],
+
+            FieldGroup#GeanralInfo: {
+                Data: [
+                    {Value:BPRepoID}
+                ]
+            }
     }
 )
 

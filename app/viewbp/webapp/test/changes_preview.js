@@ -180,7 +180,7 @@ if (parseInt(version[0]) <= 1 && parseInt(version[1]) < 78) {
                                             oResult.changes = aProcessedChanges;
                                             var oLrepChange = {
                                                 changes: oResult,
-                                                componentClassName: 'project1'
+                                                componentClassName: 'com.sap.view.bp.viewbp'
                                             };
                                             resolve(oLrepChange);
                                         });
@@ -191,7 +191,7 @@ if (parseInt(version[0]) <= 1 && parseInt(version[1]) < 78) {
                                         oResult.changes = aProcessedChanges;
                                         var oLrepChange = {
                                             changes: oResult,
-                                            componentClassName: 'project1'
+                                            componentClassName: 'com.sap.view.bp.viewbp'
                                         };
                                         resolve(oLrepChange);
                                     }

@@ -5,7 +5,7 @@ sap.ui.define([
 
     var urlHelper = library.URLHelper;
 
-    return sap.ui.controller("project1.ext.controller.ListReportExtension", {
+    return sap.ui.controller("com.sap.view.bp.viewbp.ext.controller.ListReportExtension", {
         onInit: function (oEvent) {
             //alert('onInit');
         },

@@ -1,7 +1,7 @@
 {
     "_version": "1.32.0",
     "sap.app": {
-        "id": "project1",
+        "id": "com.sap.view.bp.viewbp",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "applicationVersion": {
@@ -113,16 +113,34 @@
         "extends": {
             "extensions": {
                 "sap.ui.viewExtensions":{
+                    "sap.suite.ui.generic.template.ObjectPage.view.Details": {
+                        "ReplaceFacet|BusinessP|generalFacetId": {
+                            "type": "XML",
+                            "className": "sap.ui.core.Fragment",
+                            "fragmentName": "com.sap.view.bp.viewbp.ext.fragments.UploadCollection",
+                            "sap.ui.generic.app": {
+                                "title": "Upload Collection"
+                            }
+                        },
+                        "AfterFacet|BusinessP|generalFacetId": {
+                            "type": "XML",
+                            "className": "sap.ui.core.Fragment",
+                            "fragmentName": "com.sap.view.bp.viewbp.ext.fragments.PdfViewer",
+                            "sap.ui.generic.app": {
+                                "title": "PDF Viewer"
+                            }
+                        }
+                    },
                     "sap.suite.ui.generic.template.ListReport.view.ListReport":{
                         "ResponsiveTableColumnsExtension|BusinessP":{
                             "className":"sap.ui.core.Fragment",
-                            "fragmentName":"project1.ext.fragments.LRTColumnsBPPrimaryContact",
+                            "fragmentName":"com.sap.view.bp.viewbp.ext.fragments.LRTColumnsBPPrimaryContact",
                             "type":"XML",
                             "id":"Expensive"                        
                             },
                          "ResponsiveTableCellsExtension|BusinessP":{
                             "className":"sap.ui.core.Fragment",
-                            "fragmentName":"project1.ext.fragments.LRTableCellsBPPrimaryContact",
+                            "fragmentName":"com.sap.view.bp.viewbp.ext.fragments.LRTableCellsBPPrimaryContact",
                             "type":"XML",
                             "id":"Expensive"
                     }
@@ -131,10 +149,10 @@
 
              "sap.ui.controllerExtensions": {
                 "sap.suite.ui.generic.template.ListReport.view.ListReport": {
-                    "controllerName": "project1.ext.controller.ListReportExtension"
+                    "controllerName": "com.sap.view.bp.viewbp.ext.controller.ListReportExtension"
                 },
                 "sap.suite.ui.generic.template.ObjectPage.view.Details": {
-                    "controllerName": "project1.ext.controller.ObjectPageExtension"
+                    "controllerName": "com.sap.view.bp.viewbp.ext.controller.ObjectPageExtension"
                 }
              }
           }
@@ -166,6 +184,15 @@
                             "dateSettings": {
                                 "useDateRange": true
                             }
+                        }
+                    }
+                },
+                "pages": {
+                    "ObjectPage|BusinessP": {
+                        "entitySet": "BusinessP",
+                        "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                        "component": {
+                            "name": "sap.suite.ui.generic.template.ObjectPage"
                         }
                     }
                 }

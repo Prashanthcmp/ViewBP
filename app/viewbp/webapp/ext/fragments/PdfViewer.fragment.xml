@@ -1,0 +1,10 @@
+<core:FragmentDefinition
+    xmlns:core='sap.ui.core'
+    xmlns='sap.m'>
+
+    <PDFViewer source="http://www.africau.edu/images/default/sample.pdf" title="PDF" height="600px">
+				<layoutData>
+					<FlexItemData growFactor="1" />
+				</layoutData>
+			</PDFViewer>
+</core:FragmentDefinition>

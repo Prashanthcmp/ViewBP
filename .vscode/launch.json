@@ -1,11 +1,4 @@
 {
-  "inputs": [
-    {
-      "id": "UI5Version",
-      "type": "command",
-      "command": "sap.ux.appGenerator.ui5Version"
-    }
-  ],
   "configurations": [
     {
       "command": "cds run --with-mocks --in-memory?",
@@ -116,8 +109,116 @@
       "internalConsoleOptions": "neverOpen",
       "port": 9229,
       "env": {}
+    },
+    {
+      "name": "Start viewbp",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "cwd": "${workspaceFolder}/viewbp",
+      "windows": {
+        "runtimeExecutable": "npm.cmd"
+      },
+      "runtimeArgs": [
+        "run-script",
+        "start"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229,
+      "env": {
+        "DEBUG": "--inspect"
+      }
+    },
+    {
+      "name": "Start viewbp with UI5 Version",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "cwd": "${workspaceFolder}/viewbp",
+      "windows": {
+        "runtimeExecutable": "npm.cmd"
+      },
+      "runtimeArgs": [
+        "run-script",
+        "start"
+      ],
+      "args": [
+        "--",
+        "${input:UI5Version}"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229,
+      "env": {
+        "DEBUG": "--inspect"
+      }
+    },
+    {
+      "name": "Start viewbp Mock",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/viewbp",
+      "runtimeExecutable": "npm",
+      "windows": {
+        "runtimeExecutable": "npm.cmd"
+      },
+      "runtimeArgs": [
+        "run-script",
+        "start-mock"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229,
+      "env": {}
+    },
+    {
+      "name": "Start viewbp Mock with UI5 Version",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/viewbp",
+      "runtimeExecutable": "npm",
+      "windows": {
+        "runtimeExecutable": "npm.cmd"
+      },
+      "runtimeArgs": [
+        "run-script",
+        "start-mock"
+      ],
+      "args": [
+        "--",
+        "${input:UI5Version}"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
+    },
+    {
+      "name": "Start viewbp Local",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/viewbp",
+      "runtimeExecutable": "npm",
+      "windows": {
+        "runtimeExecutable": "npm.cmd"
+      },
+      "runtimeArgs": [
+        "run-script",
+        "start-local"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229,
+      "env": {}
     }
   ],
   "compounds": [],
+  "inputs": [
+    {
+      "id": "UI5Version",
+      "type": "command",
+      "command": "sap.ux.appGenerator.ui5Version"
+    }
+  ],
   "version": "0.2.0"
 }

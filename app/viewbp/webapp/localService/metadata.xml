@@ -3,6 +3,9 @@
     <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
     </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
     <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
     </edmx:Reference>
@@ -10,7 +13,6 @@
         <Schema Namespace="MyViewBPService" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
             <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
                 <EntitySet Name="BusinessP" EntityType="MyViewBPService.BusinessP"/>
-                <EntitySet Name="BusinessProcess" EntityType="MyViewBPService.BusinessProcess"/>
                 <EntitySet Name="BusinessP_texts" EntityType="MyViewBPService.BusinessP_texts"/>
                 <AssociationSet Name="BusinessP_texts_1" Association="MyViewBPService.BusinessP_texts_1">
                     <End Role="BusinessP" EntitySet="BusinessP"/>
@@ -28,15 +30,9 @@
                 <Property Name="BPRepoID" Type="Edm.Int32" Nullable="false"/>
                 <Property Name="BPRepoName" Type="Edm.String"/>
                 <Property Name="BPLocation" Type="Edm.String"/>
+                <Property Name="BPPrimaryContact" Type="Edm.String"/>
                 <NavigationProperty Name="texts" Relationship="MyViewBPService.BusinessP_texts_1" FromRole="BusinessP" ToRole="BusinessP_texts"/>
                 <NavigationProperty Name="localized" Relationship="MyViewBPService.BusinessP_localized" FromRole="BusinessP" ToRole="BusinessP_texts"/>
-            </EntityType>
-            <EntityType Name="BusinessProcess">
-                <Key>
-                    <PropertyRef Name="ID"/>
-                </Key>
-                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
-                <Property Name="name" Type="Edm.String"/>
             </EntityType>
             <EntityType Name="BusinessP_texts">
                 <Key>
@@ -62,17 +58,23 @@
                     <Collection>
                         <PropertyPath>BPRepoID</PropertyPath>
                         <PropertyPath>BPRepoName</PropertyPath>
+                        <PropertyPath>BPLocation</PropertyPath>
+                        <PropertyPath>BPPrimaryContact</PropertyPath>
                     </Collection>
                 </Annotation>
                 <Annotation Term="UI.LineItem">
                     <Collection>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="BPRepoID"/>
-                            <PropertyValue Property="Label" String="Repo ID"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="BPRepoName"/>
-                            <PropertyValue Property="Label" String="Repo Name"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="BPLocation"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="BPPrimaryContact"/>
                         </Record>
                     </Collection>
                 </Annotation>
@@ -109,39 +111,23 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="MyViewBPService.BusinessProcess" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Capabilities.DeleteRestrictions">
-                    <Record Type="Capabilities.DeleteRestrictionsType">
-                        <PropertyValue Property="Deletable" Bool="false"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="Capabilities.InsertRestrictions">
-                    <Record Type="Capabilities.InsertRestrictionsType">
-                        <PropertyValue Property="Insertable" Bool="false"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="Capabilities.UpdateRestrictions">
-                    <Record Type="Capabilities.UpdateRestrictionsType">
-                        <PropertyValue Property="Updatable" Bool="false"/>
-                    </Record>
-                </Annotation>
+            <Annotations Target="MyViewBPService.BusinessP/BPRepoID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Business Partner ID"/>
             </Annotations>
-            <Annotations Target="MyViewBPService.EntityContainer/BusinessProcess" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Capabilities.DeleteRestrictions">
-                    <Record Type="Capabilities.DeleteRestrictionsType">
-                        <PropertyValue Property="Deletable" Bool="false"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="Capabilities.InsertRestrictions">
-                    <Record Type="Capabilities.InsertRestrictionsType">
-                        <PropertyValue Property="Insertable" Bool="false"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="Capabilities.UpdateRestrictions">
-                    <Record Type="Capabilities.UpdateRestrictionsType">
-                        <PropertyValue Property="Updatable" Bool="false"/>
-                    </Record>
-                </Annotation>
+            <Annotations Target="MyViewBPService.BusinessP/BPRepoName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Business Partner Name"/>
+            </Annotations>
+            <Annotations Target="MyViewBPService.BusinessP/BPLocation" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Business Partner Location"/>
+            </Annotations>
+            <Annotations Target="MyViewBPService.BusinessP/BPPrimaryContact" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Primary Contact"/>
+            </Annotations>
+            <Annotations Target="MyViewBPService.BusinessP_texts/BPRepoID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Business Partner ID"/>
+            </Annotations>
+            <Annotations Target="MyViewBPService.BusinessP_texts/BPRepoName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Business Partner Name"/>
             </Annotations>
         </Schema>
     </edmx:DataServices>

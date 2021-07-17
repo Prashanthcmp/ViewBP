@@ -12,7 +12,7 @@
         <edmx:Include Namespace="MyViewBPService"/>
     </edmx:Reference>
     <edmx:DataServices>
-        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="com.sap.view.bp">
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>
